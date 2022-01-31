@@ -10,9 +10,9 @@ public class Main {
         SeguroDAO seguro = new SeguroDAO();
         Timestamp fechaactual = Timestamp.from(Instant.now());
         Seguro seg = new Seguro(1, "53765976-A","Alberto", "Pedregal", "Sáez",
-                28, 0, "N", '0', fechaactual, "Coche");
+                28, 0, "N", '0', fechaactual, "Coche",true);
         Seguro seg1 = new Seguro("53765977-G","Antonio", "Pedregal", "Sáez",
-                27, 0, "N", '0', fechaactual, "Moto");
+                27, 0, "N", '0', fechaactual, "Moto", true);
 
         System.out.println("------ INSERTAR ------");
         seguro.insertar(seg);

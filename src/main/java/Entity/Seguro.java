@@ -18,13 +18,14 @@ public class Seguro {
     private int numhijos;
     private Timestamp fechacreacion;
     private String tiposeguro;
+    private boolean mayorEdad;
 
     public Seguro() {
     }
 
     public Seguro(int idseguro, String nif, String nombre, String ape1, String ape2, int edad,
                   int sexo, String casado, int numhijos, Timestamp fechacreacion,
-                  String tiposeguro) {
+                  String tiposeguro, boolean mayorEdad) {
         this.idseguro = idseguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -36,11 +37,12 @@ public class Seguro {
         this.numhijos = numhijos;
         this.fechacreacion = fechacreacion;
         this.tiposeguro = tiposeguro;
+        this.mayorEdad = edad>=18;
     }
 
     public Seguro(String nif, String nombre, String ape1, String ape2, int edad,
                   int sexo, String casado, int numhijos, Timestamp fechacreacion,
-                  String tiposeguro) {
+                  String tiposeguro, boolean mayorEdad) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -52,9 +54,11 @@ public class Seguro {
         this.numhijos = numhijos;
         this.fechacreacion = fechacreacion;
         this.tiposeguro = tiposeguro;
+        this.mayorEdad = edad>=18;
     }
 
     @Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDSEGURO", nullable = false)
     public int getIdseguro() {
         return idseguro;
@@ -162,6 +166,16 @@ public class Seguro {
 
     public void setTiposeguro(String tiposeguro) {
         this.tiposeguro = tiposeguro;
+    }
+
+    @Basic
+    @Column(name = "MAYOREDAD")
+    public Boolean getMayorEdad() {
+        return mayorEdad;
+    }
+
+    public void setMayorEdad(Boolean mayorEdad) {
+        this.mayorEdad = edad >= 18;
     }
 
     @Override

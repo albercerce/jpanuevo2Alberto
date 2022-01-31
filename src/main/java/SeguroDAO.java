@@ -17,7 +17,7 @@ public class SeguroDAO {
         try {
             transaction.begin();
             if (manager.contains(seguro)){
-                System.out.println("El seguro ya eciste en la base de datos");
+                System.out.println("El seguro ya existe en la base de datos");
             } else {
                 manager.persist(seguro);
             }
