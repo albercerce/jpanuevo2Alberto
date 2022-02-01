@@ -2,6 +2,7 @@ package Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Objects;
 
 @Entity
@@ -19,13 +20,14 @@ public class Seguro {
     private Timestamp fechacreacion;
     private String tiposeguro;
     private boolean mayorEdad;
+    private DateFormat fechaNacimiento;
 
     public Seguro() {
     }
 
     public Seguro(int idseguro, String nif, String nombre, String ape1, String ape2, int edad,
                   int sexo, String casado, int numhijos, Timestamp fechacreacion,
-                  String tiposeguro, boolean mayorEdad) {
+                  String tiposeguro, boolean mayorEdad, DateFormat fechaNacimiento) {
         this.idseguro = idseguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -38,11 +40,12 @@ public class Seguro {
         this.fechacreacion = fechacreacion;
         this.tiposeguro = tiposeguro;
         this.mayorEdad = edad>=18;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public Seguro(String nif, String nombre, String ape1, String ape2, int edad,
                   int sexo, String casado, int numhijos, Timestamp fechacreacion,
-                  String tiposeguro, boolean mayorEdad) {
+                  String tiposeguro, boolean mayorEdad, DateFormat fechaNacimiento) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -55,6 +58,7 @@ public class Seguro {
         this.fechacreacion = fechacreacion;
         this.tiposeguro = tiposeguro;
         this.mayorEdad = edad>=18;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     @Id
@@ -178,6 +182,16 @@ public class Seguro {
         this.mayorEdad = edad >= 18;
     }
 
+    @Basic
+    @Column(name = "FECHANACIMIENTO", nullable = true, length = 255)
+    public DateFormat getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(DateFormat fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -206,6 +220,8 @@ public class Seguro {
                 ", numhijos=" + numhijos +
                 ", fechacreacion=" + fechacreacion +
                 ", tiposeguro='" + tiposeguro + '\'' +
+                ", mayorEdad=" + mayorEdad +
+                ", fechaNacimiento=" + fechaNacimiento +
                 '}';
     }
 }
