@@ -178,6 +178,7 @@ public class Seguro {
         this.mayorEdad = edad >= 18;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
