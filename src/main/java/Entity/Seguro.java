@@ -3,6 +3,7 @@ package Entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -21,13 +22,14 @@ public class Seguro {
     private String tiposeguro;
     private boolean mayorEdad;
     private DateFormat fechaNacimiento;
+    private LocalDateTime hora;
 
     public Seguro() {
     }
 
     public Seguro(int idseguro, String nif, String nombre, String ape1, String ape2, int edad,
                   int sexo, String casado, int numhijos, Timestamp fechacreacion,
-                  String tiposeguro, boolean mayorEdad, DateFormat fechaNacimiento) {
+                  String tiposeguro, boolean mayorEdad, DateFormat fechaNacimiento, LocalDateTime hora) {
         this.idseguro = idseguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -41,11 +43,12 @@ public class Seguro {
         this.tiposeguro = tiposeguro;
         this.mayorEdad = edad>=18;
         this.fechaNacimiento = fechaNacimiento;
+        this.hora = hora;
     }
 
     public Seguro(String nif, String nombre, String ape1, String ape2, int edad,
                   int sexo, String casado, int numhijos, Timestamp fechacreacion,
-                  String tiposeguro, boolean mayorEdad, DateFormat fechaNacimiento) {
+                  String tiposeguro, boolean mayorEdad, DateFormat fechaNacimiento, LocalDateTime hora) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -59,6 +62,7 @@ public class Seguro {
         this.tiposeguro = tiposeguro;
         this.mayorEdad = edad>=18;
         this.fechaNacimiento = fechaNacimiento;
+        this.hora = hora;
     }
 
     @Id
@@ -190,6 +194,16 @@ public class Seguro {
 
     public void setFechaNacimiento(DateFormat fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    @Basic
+    @Column(name = "HORA", nullable = true, length = 255)
+    public LocalDateTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalDateTime hora) {
+        this.ape2 = ape2;
     }
 
 
